@@ -20,7 +20,7 @@ Claude Code 세션을 저장해 두고, 나중에 **저장한 세션 전부를 W
 ### A. 한 줄 설치 (PowerShell)
 
 ```powershell
-irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | iex
 ```
 
 또는 저장소를 받아서:
@@ -81,6 +81,7 @@ npx claude-tab-sessions install               # -ConfigDir <dir>, -Force
 skills/
   save/SKILL.md, save/sessions.ps1   ← 모든 로직은 sessions.ps1 하나
   load/ del/ list/ clean/SKILL.md     ← 각 명령은 sessions.ps1 을 호출해 결과만 보여줌
+get.ps1                               ← A 한 줄 설치 (다운로드 후 install.ps1 실행)
 install.ps1 / uninstall.ps1           ← A, C 설치
 .claude-plugin/                       ← B (plugin.json, marketplace.json)
 bin/cli.js, package.json              ← C (npm)
@@ -97,6 +98,6 @@ MIT
 Slash commands for Claude Code that bookmark sessions and reopen all of them as Windows Terminal tabs.
 `/save [name]`, `/load [name]`, `/del [name]`, `/list`, `/clean [apply]`. Windows only for now (messages are in Korean).
 
-Install one of: `irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/install.ps1 | iex`,
+Install one of: `irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | iex`,
 `/plugin marketplace add 96-kdh/claude-tab-sessions` + `/plugin install tab-sessions@claude-tab-sessions`,
 or `npx claude-tab-sessions install`.
