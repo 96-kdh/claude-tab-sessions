@@ -15,9 +15,15 @@ Claude Code 세션을 저장해 두고, 나중에 **저장한 세션 전부를 W
 
 ## 설치
 
-세 방법 중 **하나만** 쓰세요. A·C 는 `/save` 처럼 짧은 이름으로, B(플러그인)는 플러그인 규칙상 `/tab-sessions:save` 처럼 접두어가 붙은 이름으로 설치됩니다. 짧은 이름을 원하면 A 나 C 를 쓰세요.
+세 방법 중 **하나만** 쓰세요. A·B 는 `/save` 처럼 짧은 이름으로, C(플러그인)는 플러그인 규칙상 `/tab-sessions:save` 처럼 접두어가 붙은 이름으로 설치됩니다. 짧은 이름을 원하면 A 나 B 를 쓰세요.
 
-### A. 한 줄 설치 (PowerShell)
+### A. npm
+
+```powershell
+npx claude-tab-sessions install               # -ConfigDir <dir>, -Force
+```
+
+### B. 한 줄 설치 (PowerShell)
 
 ```powershell
 irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | iex
@@ -27,22 +33,16 @@ irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | 
 
 ```powershell
 git clone https://github.com/96-kdh/claude-tab-sessions
-.\claude-tab-sessions\install.ps1            # -ConfigDir <dir>, -Force
+.claude-tab-sessionsinstall.ps1            # -ConfigDir <dir>, -Force
 ```
 
-### B. Claude Code 플러그인
+### C. Claude Code 플러그인
 
 Claude Code 안에서 (명령은 `/tab-sessions:save`, `/tab-sessions:load` … 형태):
 
 ```
 /plugin marketplace add 96-kdh/claude-tab-sessions
 /plugin install tab-sessions@claude-tab-sessions
-```
-
-### C. npm
-
-```powershell
-npx claude-tab-sessions install               # -ConfigDir <dir>, -Force
 ```
 
 ### 설치 위치
@@ -68,7 +68,7 @@ npx claude-tab-sessions install               # -ConfigDir <dir>, -Force
 
 ## 알아둘 것
 
-- **이름에 따옴표를 쓰지 마세요.** `/save new char` 처럼 그대로 쓰면 공백 포함 이름이 됩니다.
+- **공백이 있는 이름**은 따옴표 없이 그대로 쓰면 됩니다 (`/save new char`). 큰따옴표는 이름에 쓸 수 없습니다.
 - **30일 자동삭제**: Claude Code 는 마지막 활동 후 `cleanupPeriodDays`(기본 30일)가 지난 대화 기록을 지웁니다. 저장한 세션도 예외가 아니니 `/list` 의 "자동삭제까지" 를 확인하세요.
 - **`/clean apply` 는 되돌릴 수 없습니다.** 저장된 세션, 실행 중인 세션, 지금 세션은 지우지 않습니다. 실행 중인 세션은 Claude Code 내부 파일(`<설정폴더>\sessions\*.json`)로 판단하는데, 이 형식이 바뀌어 지금 세션조차 확인되지 않으면 정리를 중단합니다.
 - `/del` 은 목록에서만 빼고 세션을 종료하지 않습니다. Claude Code 에는 스스로 종료하는 공식 방법이 없어 `/exit` 를 직접 입력해야 합니다.
@@ -81,10 +81,10 @@ npx claude-tab-sessions install               # -ConfigDir <dir>, -Force
 skills/
   save/SKILL.md, save/sessions.ps1   ← 모든 로직은 sessions.ps1 하나
   load/ del/ list/ clean/SKILL.md     ← 각 명령은 sessions.ps1 을 호출해 결과만 보여줌
-get.ps1                               ← A 한 줄 설치 (다운로드 후 install.ps1 실행)
-install.ps1 / uninstall.ps1           ← A, C 설치
-.claude-plugin/                       ← B (plugin.json, marketplace.json)
-bin/cli.js, package.json              ← C (npm)
+get.ps1                               ← B 한 줄 설치 (다운로드 후 install.ps1 실행)
+install.ps1 / uninstall.ps1           ← A, B 설치
+.claude-plugin/                       ← C (plugin.json, marketplace.json)
+bin/cli.js, package.json              ← A (npm)
 ```
 
 ## License
@@ -98,6 +98,6 @@ MIT
 Slash commands for Claude Code that bookmark sessions and reopen all of them as Windows Terminal tabs.
 `/save [name]`, `/load [name]`, `/del [name]`, `/list`, `/clean [apply]`. Windows only for now (messages are in Korean).
 
-Install one of: `irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | iex`,
-`/plugin marketplace add 96-kdh/claude-tab-sessions` + `/plugin install tab-sessions@claude-tab-sessions`,
-or `npx claude-tab-sessions install`.
+Install one of: `npx claude-tab-sessions install`,
+`irm https://raw.githubusercontent.com/96-kdh/claude-tab-sessions/main/get.ps1 | iex`,
+or `/plugin marketplace add 96-kdh/claude-tab-sessions` + `/plugin install tab-sessions@claude-tab-sessions` (commands get a `/tab-sessions:` prefix).
