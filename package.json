@@ -1,0 +1,13 @@
+{
+  "name": "claude-tab-sessions",
+  "version": "0.1.0",
+  "description": "Save Claude Code sessions and reopen them all as terminal tabs (/save /load /del /list /clean). Windows only for now.",
+  "bin": { "claude-tab-sessions": "bin/cli.js" },
+  "files": ["bin", "skills", "install.ps1", "uninstall.ps1", "README.md", "LICENSE"],
+  "os": ["win32"],
+  "keywords": ["claude", "claude-code", "sessions", "resume", "windows-terminal"],
+  "repository": { "type": "git", "url": "git+https://github.com/96-kdh/claude-tab-sessions.git" },
+  "homepage": "https://github.com/96-kdh/claude-tab-sessions",
+  "author": "96-kdh",
+  "license": "MIT"
+}

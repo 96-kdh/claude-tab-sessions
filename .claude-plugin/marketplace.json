@@ -1,0 +1,15 @@
+{
+  "name": "claude-tab-sessions",
+  "description": "Session save/restore slash commands for Claude Code",
+  "owner": {
+    "name": "96-kdh"
+  },
+  "plugins": [
+    {
+      "name": "tab-sessions",
+      "source": "./",
+      "description": "Save Claude Code sessions and reopen them all as terminal tabs (/save /load /del /list /clean). Windows only for now.",
+      "version": "0.1.0"
+    }
+  ]
+}
