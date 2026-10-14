@@ -15,7 +15,7 @@ Claude Code 세션을 저장해 두고, 나중에 **저장한 세션 전부를 W
 
 ## 설치
 
-세 방법 중 **하나만** 쓰세요. A·C 는 `/save` 처럼 짧은 이름, B 는 플러그인 규칙상 `/tab-sessions:save` 형태가 될 수 있습니다.
+세 방법 중 **하나만** 쓰세요. A·C 는 `/save` 처럼 짧은 이름으로, B(플러그인)는 플러그인 규칙상 `/tab-sessions:save` 처럼 접두어가 붙은 이름으로 설치됩니다. 짧은 이름을 원하면 A 나 C 를 쓰세요.
 
 ### A. 한 줄 설치 (PowerShell)
 
@@ -32,7 +32,7 @@ git clone https://github.com/96-kdh/claude-tab-sessions
 
 ### B. Claude Code 플러그인
 
-Claude Code 안에서:
+Claude Code 안에서 (명령은 `/tab-sessions:save`, `/tab-sessions:load` … 형태):
 
 ```
 /plugin marketplace add 96-kdh/claude-tab-sessions
